@@ -128,6 +128,43 @@ void DeltaCompressorTestSuite::test_all()
     TEST_ASSERT(points[i].distance(new_points[i]) < 0.00000001);
 }
 
+void EncoderTestSuite::test_dynamic()
+{
+  uint64_t nums[] = {2, 1, 5, 67, 68, 4, 3, 2, 1, 73, 0, 2};
+  
+  char buffer[128] = {0}; 
+  stream<basic_array<char> > bas(buffer, 128);
+  obstream obs(&bas);
+  
+  DynamicEncoder enc(&obs, nums, 12);
+  for(int i = 0; i < 12; ++i)
+    enc.write_next();
+  
+  obs.close();
+  
+  boost::iostreams::seek(bas, 0, std::ios_base::beg);
+  ibstream ibs(&bas);
+  
+  int alphabet_len = ibs.read_byte();
+  vector<int> alphabet(alphabet_len);
+  for(int i = 0; i < alphabet_len; ++i)
+  {
+    alphabet[i] = ibs.read_byte();
+  }
+  
+  Huffman::Codebook<int> codebook(alphabet, ibs);
+  
+  for(int i = 0; i < 12; ++i)
+  {
+    uint64_t residuals[3];
+    
+    int num_len = codebook.lookup(ibs);
+    uint64_t num = ibs.read_int(num_len);
+    
+    TEST_ASSERT(num == nums[i]);
+  }
+}
+
 int main()
 {
   Test::Suite ts;
@@ -137,6 +174,7 @@ int main()
   ts.add(auto_ptr<Test::Suite>(new HuffmanTestSuite));
   ts.add(auto_ptr<Test::Suite>(new LenFreqDivTestSuite));
   ts.add(auto_ptr<Test::Suite>(new DeltaCompressorTestSuite));
+  ts.add(auto_ptr<Test::Suite>(new EncoderTestSuite));
   
   Test::TextOutput output(Test::TextOutput::Terse);
   ts.run(output);

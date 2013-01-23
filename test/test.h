@@ -2,6 +2,7 @@
 #include "huffman.h"
 #include "len_freq_div.h"
 #include "delta_compressor.h"
+#include "dynamic_encoder.h"
 
 #include <memory>
 #include <iostream>
@@ -96,5 +97,17 @@ public:
     
 private:
   void test_all();
+};
+
+class EncoderTestSuite : public Test::Suite
+{
+public:
+  EncoderTestSuite()
+  {
+    TEST_ADD(EncoderTestSuite::test_dynamic)
+  }
+    
+private:
+  void test_dynamic();
 };
 

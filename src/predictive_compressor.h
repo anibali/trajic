@@ -31,8 +31,6 @@ private:
   double max_temporal_err, max_spatial_err;
   
   int calculate_discarded_bits(double max_value, double error_bound);
-  void encode_residuals(uint64_t residuals[][3], int n_residuals,
-      obstream& obs, int* discard);
 };
 
 #endif
