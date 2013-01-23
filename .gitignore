@@ -1,0 +1,5 @@
+*.o
+experiments/
+doc/
+bin/
+test/test

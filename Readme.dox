@@ -1,0 +1,35 @@
+/**
+
+@mainpage Trajic Project Documentation
+
+Synopsis
+--------
+
+Trajic is a program for compressing GPS trajectory data.
+
+Usage
+-----
+
+Compress a trajectory losslessly:
+
+    trajic c traj.plt
+
+Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees
+spatially:
+
+    trajic c traj.plt 0.1 0.001
+
+Decompress a trajectory:
+
+    trajic d traj.tjc
+
+Important classes
+-----------------
+
+- PredictiveCompressor
+- \ref ibstream
+- \ref obstream
+- GPSPoint
+
+*/
+
