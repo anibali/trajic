@@ -75,11 +75,11 @@ void PredictiveCompressor::compress(obstream& obs, vector<GPSPoint> points)
   Encoder *encoders[3];
   
   for(int j = 0; j < 3; ++j)
-    encoders[j] = new DynamicEncoder(&obs, residuals[j], points.size() - 1);
+    encoders[j] = new DynamicEncoder(obs, residuals[j], points.size() - 1);
 
   for(int i = 0; i < points.size() - 1; ++i)
     for(int j = 0; j < 3; ++j)
-      encoders[j]->write_next();
+      encoders[j]->encode(obs, residuals[j][i]);
 
   for(int j = 0; j < 3; ++j)
     delete encoders[j];
@@ -98,27 +98,16 @@ vector<GPSPoint> PredictiveCompressor::decompress(ibstream& ibs)
   for(int i = 0; i < 3; ++i)
     tuples[0][i].lng = ibs.read_int(64);
   
-  Huffman::Codebook<int>* codebooks[3];
+  Encoder* decoders[3];
   for(int j = 0; j < 3; ++j)
-  {
-    int alphabet_len = ibs.read_byte();
-    vector<int> alphabet(alphabet_len);
-    for(int i = 0; i < alphabet_len; ++i)
-    {
-      alphabet[i] = ibs.read_byte();
-    }
-    codebooks[j] = new Huffman::Codebook<int>(alphabet, ibs);
-  }
+    decoders[j] = new DynamicEncoder(ibs);
   
   for(int i = 1; i < n_points; ++i)
   {
     uint64_t residuals[3];
     
     for(int j = 0; j < 3; ++j)
-    {
-      int residual_len = codebooks[j]->lookup(ibs);
-      residuals[j] = ibs.read_int(residual_len) << discard[j];
-    }
+      residuals[j] = decoders[j]->decode(ibs) << discard[j];
     
     uint64_t time = predictor->predict_time(tuples, i).lng ^ residuals[0];
     tuples[i][0].lng = time;
@@ -137,7 +126,8 @@ vector<GPSPoint> PredictiveCompressor::decompress(ibstream& ibs)
     points.push_back(point);
   }
   
-  for(int j = 0; j < 3; ++j) delete codebooks[j];
+  for(int j = 0; j < 3; ++j)
+    delete decoders[j];
   
   return points;
 }

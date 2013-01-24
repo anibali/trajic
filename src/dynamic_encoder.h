@@ -12,17 +12,16 @@ using namespace std;
 class DynamicEncoder : public Encoder
 {
 public:
-  DynamicEncoder(obstream *obs, uint64_t *nums, int len);
-
-  virtual void write_next() override;
-  ~DynamicEncoder()
-  {
-    delete codebook;
-  }
+  DynamicEncoder(obstream& obs, uint64_t *nums, int len);
+  DynamicEncoder(ibstream& ibs);
+  virtual void encode(obstream& obs, uint64_t num) override;
+  virtual uint64_t decode(ibstream& ibs) override;
+  ~DynamicEncoder() { delete codebook; }
 
 private:
-  Huffman::Codebook<int> *codebook;
-  int pos = 0;
+  Huffman::Codebook<int> *codebook = nullptr;
+  uint64_t *nums;
+  int len = 0;
 };
 
 #endif

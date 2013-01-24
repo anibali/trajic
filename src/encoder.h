@@ -2,18 +2,13 @@
 #define _ENCODER_H_
 
 #include "obstream.h"
+#include "ibstream.h"
 
 class Encoder
 {
 public:
-  Encoder(obstream *obs, uint64_t *nums, int len)
-    : obs(obs), nums(nums), len(len) {}
-  virtual void write_next() = 0;
-
-protected:
-  obstream *obs;
-  uint64_t *nums;
-  int len;
+  virtual void encode(obstream& obs, uint64_t num) = 0;
+  virtual uint64_t decode(ibstream& ibs) = 0;
 };
 
 #endif

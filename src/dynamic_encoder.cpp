@@ -1,7 +1,6 @@
 #include "dynamic_encoder.h"
 
-DynamicEncoder::DynamicEncoder(obstream *obs, uint64_t *nums, int len)
-  : Encoder(obs, nums, len)
+DynamicEncoder::DynamicEncoder(obstream& obs, uint64_t *nums, int len)
 {
   double freqs[65] = {0};
   double step = 1.0 / len;
@@ -64,29 +63,41 @@ DynamicEncoder::DynamicEncoder(obstream *obs, uint64_t *nums, int len)
     Huffman::create_codewords(clumped_freqs, n_divs));
   
   // Write out alphabet and codebook
-  obs->write_int(codebook->get_alphabet().size(), 8);
+  obs.write_int(codebook->get_alphabet().size(), 8);
   for(int symbol : codebook->get_alphabet())
-    obs->write_int(symbol, 8);
-  codebook->encode(*obs);
+    obs.write_int(symbol, 8);
+  codebook->encode(obs);
 }
 
-void DynamicEncoder::write_next()
+DynamicEncoder::DynamicEncoder(ibstream& ibs)
 {
-  if(pos < len)
+  int alphabet_len = ibs.read_byte();
+  vector<int> alphabet(alphabet_len);
+  for(int i = 0; i < alphabet_len; ++i)
   {
-    vector<int> dividers = codebook->get_alphabet();
-    int min_len = 0;
-    if(nums[pos] > 0)
-      min_len = (int)log2(nums[pos]) + 1;
-
-    int index = 0;
-    while(dividers[index] < min_len)
-      ++index;
-    for(char c : codebook->get_codewords()[index])
-      obs->write_bit(c != '0');
-    obs->write_int(nums[pos], dividers[index]);
-    
-    ++pos;
+    alphabet[i] = ibs.read_byte();
   }
+  codebook = new Huffman::Codebook<int>(alphabet, ibs);
 }
+
+void DynamicEncoder::encode(obstream& obs, uint64_t num)
+{
+  vector<int> dividers = codebook->get_alphabet();
+  int min_len = 0;
+  if(num > 0)
+    min_len = (int)log2(num) + 1;
+  int index = 0;
+  while(dividers[index] < min_len)
+    ++index;
+  for(char c : codebook->get_codewords()[index])
+    obs.write_bit(c != '0');
+  obs.write_int(num, dividers[index]);
+}
+
+uint64_t DynamicEncoder::decode(ibstream& ibs)
+{
+  int num_len = codebook->lookup(ibs);
+  return ibs.read_int(num_len);
+}
+
 
