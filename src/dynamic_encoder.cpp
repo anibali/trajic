@@ -100,4 +100,3 @@ uint64_t DynamicEncoder::decode(ibstream& ibs)
   return ibs.read_int(num_len);
 }
 
-
