@@ -30,7 +30,12 @@
       <section>
         <h3>Synopsis</h3>
 
-<p>Trajic is a program for compressing GPS trajectory data. To find out more about how the system works and see some experimental results, check out the official research paper.</p>
+<p>Trajic is a program for compressing GPS trajectory data. To find out more about how the system works and see some experimental results, check out the <a href="https://www.dropbox.com/s/wzire8nwfte01ot/trajic.pdf">official research paper</a>. Doxygen documentation is also <a href="doc/index.html">available</a>.</p>
+
+<p>The easiest way to format input data is as a CSV file. Each line should be formatted as follows:</p>
+
+<pre><code>&lt;timestamp in milliseconds&gt;, &lt;latitude&gt;, &lt;longitude&gt;
+</code></pre>
 
 <h3>Usage</h3>
 
@@ -42,7 +47,7 @@
 <p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees
 spatially:</p>
 
-<pre><code>trajic c traj.plt 0.1 0.001
+<pre><code>trajic c traj.csv 0.1 0.001
 </code></pre>
 
 <p>Decompress a trajectory:</p>
