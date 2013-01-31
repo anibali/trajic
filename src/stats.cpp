@@ -20,6 +20,7 @@ using boost::posix_time::ptime;
 #include "read_points.h"
 #include "predictive_compressor.h"
 #include "delta_compressor.h"
+#include "dummy_compressor.h"
 #include "dp_compressor.h"
 
 void stats(string filename, Compressor *c)
@@ -120,6 +121,12 @@ int main(int argc, char** args)
       stats(infile, &c);
     }
     else if(alg == "dp")
+    {
+      DummyCompressor dc;
+      DPCompressor c(&dc, mse);
+      stats(infile, &c);
+    }
+    else if(alg == "dpd")
     {
       DeltaCompressor dc;
       DPCompressor c(&dc, mse);
