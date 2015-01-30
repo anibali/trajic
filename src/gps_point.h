@@ -15,6 +15,8 @@ public:
     : time(time), lat(lat), lon(lon) {}
   GPSPoint(bits64* triple)
     : GPSPoint(triple[0].dbl, triple[1].dbl, triple[2].dbl) {}
+  GPSPoint()
+    : GPSPoint(0, 0, 0) {}
   double get_time() const { return time; }
   double get_longitude() const { return lon; }
   double get_latitude() const { return lat; }

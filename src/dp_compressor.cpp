@@ -1,8 +1,6 @@
 #include "dp_compressor.h"
 #include "delta_compressor.h"
 
-double flubber = 0;
-
 void DPCompressor::compress(obstream& obs, vector<GPSPoint> points)
 {
   max_error_kms = 0;

@@ -7,6 +7,16 @@ Synopsis
 
 Trajic is a program for compressing GPS trajectory data.
 
+Development dependencies
+------------------------
+
+- libcpptest-dev
+- libboost-iostreams-dev
+
+Experiments also require
+
+- gnuplot
+
 Usage
 -----
 

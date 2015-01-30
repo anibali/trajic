@@ -2,6 +2,7 @@
 #include "huffman.h"
 #include "len_freq_div.h"
 #include "delta_compressor.h"
+#include "squish_compressor.h"
 #include "dynamic_encoder.h"
 
 #include <memory>
@@ -26,7 +27,7 @@ public:
   {
     TEST_ADD(IbstreamTestSuite::test_read_functions)
   }
-    
+
 private:
   void test_read_functions();
 };
@@ -39,7 +40,7 @@ public:
     TEST_ADD(ObstreamTestSuite::test_write_double)
     TEST_ADD(ObstreamTestSuite::test_write_int)
   }
-    
+
 private:
   void test_write_double();
   void test_write_int();
@@ -53,7 +54,7 @@ public:
     TEST_ADD(GPSPointTestSuite::test_get_time)
     TEST_ADD(GPSPointTestSuite::test_distance)
   }
-    
+
 private:
   void test_get_time();
   void test_distance();
@@ -68,7 +69,7 @@ public:
     TEST_ADD(HuffmanTestSuite::test_codebook)
     TEST_ADD(HuffmanTestSuite::test_create_codewords)
   }
-    
+
 private:
   void test_node();
   void test_codebook();
@@ -82,7 +83,7 @@ public:
   {
     TEST_ADD(LenFreqDivTestSuite::test_len_freq_div)
   }
-    
+
 private:
   void test_len_freq_div();
 };
@@ -94,7 +95,19 @@ public:
   {
     TEST_ADD(DeltaCompressorTestSuite::test_all)
   }
-    
+
+private:
+  void test_all();
+};
+
+class SquishCompressorTestSuite : public Test::Suite
+{
+public:
+  SquishCompressorTestSuite()
+  {
+    TEST_ADD(SquishCompressorTestSuite::test_all)
+  }
+
 private:
   void test_all();
 };
@@ -106,7 +119,7 @@ public:
   {
     TEST_ADD(EncoderTestSuite::test_dynamic)
   }
-    
+
 private:
   void test_dynamic();
 };
