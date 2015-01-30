@@ -81,15 +81,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
+<p>Trajic is an algorithm for compressing GPS trajectory data. For a more in-depth academic explanation of how Trajic works, be sure to read the <a href="https://raw.githubusercontent.com/anibali/trajic/gh-pages/trajic_paper.pdf">research paper</a> I wrote with Dr Zhen He.</p>
+<p>This project contains a reference implementation of Trajic along with implementations of various other GPS trajectory compression schemes which were used for benchmarks and experiments.</p>
 <h2>Development dependencies </h2>
 <ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
+<li><a href="http://cpptest.sourceforge.net/">libcpptest-dev</a></li>
+<li><a href="http://www.boost.org/doc/libs/1_54_0/libs/iostreams/doc/index.html">libboost-iostreams-dev</a></li>
 </ul>
 <p>Experiments also require</p>
 <ul>
-<li>gnuplot</li>
+<li><a href="http://www.gnuplot.info/">gnuplot</a></li>
 </ul>
 <h2>Usage </h2>
 <p>Compress a trajectory losslessly: </p>
@@ -100,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <pre class="fragment">trajic d traj.tjc
 </pre><h2>Important classes </h2>
 <ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
+<li><a class="el" href="classPredictiveCompressor.html">PredictiveCompressor</a></li>
 <li><a class="el" href="classibstream.html">ibstream</a></li>
 <li><a class="el" href="classobstream.html">obstream</a></li>
 <li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
@@ -108,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 31 2015 10:46:15 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
