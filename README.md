@@ -1,6 +1,5 @@
-/**
-
-@mainpage Trajic Project Documentation
+Trajic
+======
 
 Synopsis
 --------
@@ -10,12 +9,12 @@ Trajic is a program for compressing GPS trajectory data.
 Development dependencies
 ------------------------
 
-- libcpptest-dev
-- libboost-iostreams-dev
+* libcpptest-dev
+* libboost-iostreams-dev
 
 Experiments also require
 
-- gnuplot
+* gnuplot
 
 Usage
 -----
@@ -36,10 +35,7 @@ Decompress a trajectory:
 Important classes
 -----------------
 
-- PredictiveCompressor
-- \ref ibstream
-- \ref obstream
-- GPSPoint
-
-*/
-
+* PredictiveCompressor
+* \ref ibstream
+* \ref obstream
+* GPSPoint
