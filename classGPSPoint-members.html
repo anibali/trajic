@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Trajic: Main Page</title>
+<title>Trajic: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,9 +38,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,7 +60,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,40 +82,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Trajic Documentation</div>  </div>
+<div class="title">GPSPoint Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
-<h2>Development dependencies </h2>
-<ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
-</ul>
-<p>Experiments also require</p>
-<ul>
-<li>gnuplot</li>
-</ul>
-<h2>Usage </h2>
-<p>Compress a trajectory losslessly: </p>
-<pre class="fragment">trajic c traj.plt
-</pre><p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees spatially: </p>
-<pre class="fragment">trajic c traj.plt 0.1 0.001
-</pre><p>Decompress a trajectory: </p>
-<pre class="fragment">trajic d traj.tjc
-</pre><h2>Important classes </h2>
-<ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
-<li><a class="el" href="classibstream.html">ibstream</a></li>
-<li><a class="el" href="classobstream.html">obstream</a></li>
-<li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
-</ul>
-</div></div><!-- contents -->
+
+<p>This is the complete list of members for <a class="el" href="classGPSPoint.html">GPSPoint</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classGPSPoint.html#a6a5b36db2caa0495166fe7b7c697cb82">distance</a>(GPSPoint &amp;other) const </td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGPSPoint.html#a478eeecc88b17f5f267bd49ae38f6259">distance_kms</a>(GPSPoint &amp;other) const </td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGPSPoint.html#a18994f93476e391af8825802d58e2a42">get_latitude</a>() const </td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classGPSPoint.html#ad3b303f1b99c56aeffbc336d3e4a1924">get_longitude</a>() const </td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGPSPoint.html#acd62fd905644a8e37eadbeffe802adc0">get_time</a>() const </td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classGPSPoint.html#a787e8596faee15f00cd141b0ab685c31">GPSPoint</a>(double time, double lat, double lon)</td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGPSPoint.html#aebd35227ce4954dc4dcb667dde3fb20f">GPSPoint</a>(bits64 *triple)</td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classGPSPoint.html#a7a635f12f124e516210755b0974ee1d4">GPSPoint</a>()</td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGPSPoint.html#ac4e678f4ceab820869511147f9606673">operator&lt;&lt;</a>(ostream &amp;os, const GPSPoint &amp;p)</td><td class="entry"><a class="el" href="classGPSPoint.html">GPSPoint</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+</table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 31 2015 10:33:36 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

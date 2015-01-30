@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Trajic: Main Page</title>
+<title>Trajic: bits64 Union Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,9 +38,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,7 +60,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,40 +82,62 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="unionbits64-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Trajic Documentation</div>  </div>
+<div class="title">bits64 Union Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
-<h2>Development dependencies </h2>
-<ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
+
+<p>A union for converting between doubles and longs.  
+ <a href="unionbits64.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="util_8h_source.html">util.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a658036a53008b6dfa95ccd22cab638c3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionbits64.html#a658036a53008b6dfa95ccd22cab638c3">dbl</a></td></tr>
+<tr class="separator:a658036a53008b6dfa95ccd22cab638c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd336429dab8b3b0ba31e6a2dcceb654"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionbits64.html#abd336429dab8b3b0ba31e6a2dcceb654">lng</a></td></tr>
+<tr class="separator:abd336429dab8b3b0ba31e6a2dcceb654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A union for converting between doubles and longs. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a658036a53008b6dfa95ccd22cab638c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double bits64::dbl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abd336429dab8b3b0ba31e6a2dcceb654"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t bits64::lng</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this union was generated from the following file:<ul>
+<li>src/<a class="el" href="util_8h_source.html">util.h</a></li>
 </ul>
-<p>Experiments also require</p>
-<ul>
-<li>gnuplot</li>
-</ul>
-<h2>Usage </h2>
-<p>Compress a trajectory losslessly: </p>
-<pre class="fragment">trajic c traj.plt
-</pre><p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees spatially: </p>
-<pre class="fragment">trajic c traj.plt 0.1 0.001
-</pre><p>Decompress a trajectory: </p>
-<pre class="fragment">trajic d traj.tjc
-</pre><h2>Important classes </h2>
-<ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
-<li><a class="el" href="classibstream.html">ibstream</a></li>
-<li><a class="el" href="classobstream.html">obstream</a></li>
-<li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
-</ul>
-</div></div><!-- contents -->
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 31 2015 10:33:35 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

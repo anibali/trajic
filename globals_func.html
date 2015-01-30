@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Trajic: Main Page</title>
+<title>Trajic: File Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,10 +38,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -60,6 +60,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li class="current"><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li><a href="globals.html"><span>All</span></a></li>
+      <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
+      <li><a href="globals_vars.html"><span>Variables</span></a></li>
+      <li><a href="globals_defs.html"><span>Macros</span></a></li>
+    </ul>
+  </div>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -75,37 +89,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle">
-<div class="title">Trajic Documentation</div>  </div>
-</div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
-<h2>Development dependencies </h2>
-<ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
+&#160;<ul>
+<li>compress()
+: <a class="el" href="main_8cpp.html#a57da6d0701d6d37cbae99e6f2e660726">main.cpp</a>
+</li>
+<li>decompress()
+: <a class="el" href="main_8cpp.html#ac0cfd319c6c9e7bca56544e4c67967e7">main.cpp</a>
+</li>
+<li>file_basename()
+: <a class="el" href="util_8cpp.html#ae8dffdc793186081c55353ef9a896691">util.cpp</a>
+, <a class="el" href="util_8h.html#ae8dffdc793186081c55353ef9a896691">util.h</a>
+</li>
+<li>file_ext()
+: <a class="el" href="util_8cpp.html#ae6683e1ecc5356ad250def7232175300">util.cpp</a>
+, <a class="el" href="util_8h.html#ae6683e1ecc5356ad250def7232175300">util.h</a>
+</li>
+<li>main()
+: <a class="el" href="main_8cpp.html#a7a29781a20c5dd4153c3c1cecf0ff328">main.cpp</a>
+, <a class="el" href="stats_8cpp.html#a7a29781a20c5dd4153c3c1cecf0ff328">stats.cpp</a>
+</li>
+<li>operator&lt;&lt;()
+: <a class="el" href="gps__point_8cpp.html#ac4e678f4ceab820869511147f9606673">gps_point.cpp</a>
+</li>
+<li>read_points()
+: <a class="el" href="read__points_8h.html#aa1bdca11167fad9e092dab90dd9235e1">read_points.h</a>
+</li>
+<li>stats()
+: <a class="el" href="stats_8cpp.html#a94ce2ae954ef51d7a4681c925d17d249">stats.cpp</a>
+</li>
 </ul>
-<p>Experiments also require</p>
-<ul>
-<li>gnuplot</li>
-</ul>
-<h2>Usage </h2>
-<p>Compress a trajectory losslessly: </p>
-<pre class="fragment">trajic c traj.plt
-</pre><p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees spatially: </p>
-<pre class="fragment">trajic c traj.plt 0.1 0.001
-</pre><p>Decompress a trajectory: </p>
-<pre class="fragment">trajic d traj.tjc
-</pre><h2>Important classes </h2>
-<ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
-<li><a class="el" href="classibstream.html">ibstream</a></li>
-<li><a class="el" href="classobstream.html">obstream</a></li>
-<li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
-</ul>
-</div></div><!-- contents -->
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">

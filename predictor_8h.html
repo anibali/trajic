@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Trajic: Main Page</title>
+<title>Trajic: src/predictor.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,10 +38,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -60,7 +60,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,40 +80,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">Trajic Documentation</div>  </div>
+<div class="title">predictor.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
-<h2>Development dependencies </h2>
-<ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
-</ul>
-<p>Experiments also require</p>
-<ul>
-<li>gnuplot</li>
-</ul>
-<h2>Usage </h2>
-<p>Compress a trajectory losslessly: </p>
-<pre class="fragment">trajic c traj.plt
-</pre><p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees spatially: </p>
-<pre class="fragment">trajic c traj.plt 0.1 0.001
-</pre><p>Decompress a trajectory: </p>
-<pre class="fragment">trajic d traj.tjc
-</pre><h2>Important classes </h2>
-<ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
-<li><a class="el" href="classibstream.html">ibstream</a></li>
-<li><a class="el" href="classobstream.html">obstream</a></li>
-<li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
-</ul>
-</div></div><!-- contents -->
+<div class="textblock"><code>#include &quot;<a class="el" href="util_8h_source.html">util.h</a>&quot;</code><br/>
+</div>
+<p><a href="predictor_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPredictor.html">Predictor</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 31 2015 10:33:35 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Trajic: Main Page</title>
+<title>Trajic: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,9 +38,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,7 +60,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,37 +82,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceHuffman.html">Huffman</a></li><li class="navelem"><a class="el" href="classHuffman_1_1Codebook.html">Codebook</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Trajic Documentation</div>  </div>
+<div class="title">Huffman::Codebook&lt; T &gt; Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
-<h2>Development dependencies </h2>
-<ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
-</ul>
-<p>Experiments also require</p>
-<ul>
-<li>gnuplot</li>
-</ul>
-<h2>Usage </h2>
-<p>Compress a trajectory losslessly: </p>
-<pre class="fragment">trajic c traj.plt
-</pre><p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees spatially: </p>
-<pre class="fragment">trajic c traj.plt 0.1 0.001
-</pre><p>Decompress a trajectory: </p>
-<pre class="fragment">trajic d traj.tjc
-</pre><h2>Important classes </h2>
-<ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
-<li><a class="el" href="classibstream.html">ibstream</a></li>
-<li><a class="el" href="classobstream.html">obstream</a></li>
-<li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
-</ul>
-</div></div><!-- contents -->
+
+<p>This is the complete list of members for <a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#af45d43edc150fd12e44b2645f20d8eaf">Codebook</a>(vector&lt; T &gt; alphabet, vector&lt; string &gt; codewords)</td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#a7fdfec89a13b13218315755c0e61e57e">Codebook</a>(vector&lt; T &gt; alphabet, ibstream &amp;ibs)</td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#a43a5589bd46d8fc93d4f08dea6347ed2">encode</a>(obstream &amp;obs) const </td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#a2dcd16ddc971a0f355df9b950d75cdde">get_alphabet</a>() const </td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#a57c1910ae4a7d1419f58c1bdb117ad67">get_codewords</a>() const </td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#a280def45661a81f4c8b32aea4001bf68">lookup</a>(ibstream &amp;ibs) const </td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html#a2fc1df0444bdb347c92f8f77ee657938">~Codebook</a>()</td><td class="entry"><a class="el" href="classHuffman_1_1Codebook.html">Huffman::Codebook&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+</table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">

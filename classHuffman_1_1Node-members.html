@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Trajic: Main Page</title>
+<title>Trajic: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,9 +38,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,7 +60,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,37 +82,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceHuffman.html">Huffman</a></li><li class="navelem"><a class="el" href="classHuffman_1_1Node.html">Node</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Trajic Documentation</div>  </div>
+<div class="title">Huffman::Node&lt; T &gt; Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Synopsis </h2>
-<p>Trajic is a program for compressing GPS trajectory data.</p>
-<h2>Development dependencies </h2>
-<ul>
-<li>libcpptest-dev</li>
-<li>libboost-iostreams-dev</li>
-</ul>
-<p>Experiments also require</p>
-<ul>
-<li>gnuplot</li>
-</ul>
-<h2>Usage </h2>
-<p>Compress a trajectory losslessly: </p>
-<pre class="fragment">trajic c traj.plt
-</pre><p>Compress a trajectory with max errors of 0.1 s temporally and 0.001 degrees spatially: </p>
-<pre class="fragment">trajic c traj.plt 0.1 0.001
-</pre><p>Decompress a trajectory: </p>
-<pre class="fragment">trajic d traj.tjc
-</pre><h2>Important classes </h2>
-<ul>
-<li><a class="el" href="classPredictiveCompressor.html" title="A Compressor based around a prediction-based algorithm. ">PredictiveCompressor</a></li>
-<li><a class="el" href="classibstream.html">ibstream</a></li>
-<li><a class="el" href="classobstream.html">obstream</a></li>
-<li><a class="el" href="classGPSPoint.html">GPSPoint</a> </li>
-</ul>
-</div></div><!-- contents -->
+
+<p>This is the complete list of members for <a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Node.html#ac8335ac1492b721d4fe0db3a9fdc03ea">data</a></td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Node.html#aec6be17215f6e85f2c8f362241b1cecb">delete_tree</a>()</td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Node.html#ac766c41346d7e58fca2ac973a4ae761d">get_frequency</a>() const </td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Node.html#a11a98bf31e2682cdb62eb006e9d89960">is_leaf</a>() const </td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Node.html#ad6a9020e12ee3de4b9445eb6bcf4a193">left</a></td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Node.html#a0a623e4d73aab0cd2c0efb251ecf1b65">Node</a>()=default</td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Node.html#af3cc8e5aab66bb2b8d104559f70294a7">Node</a>(T &amp;data, double freq)</td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classHuffman_1_1Node.html#a83f3c6b608845362f3a22dacb7dbb50d">Node</a>(Node&lt; T &gt; *left, Node&lt; T &gt; *right)</td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHuffman_1_1Node.html#a294c2c7f018bfe610154e33724cc11f3">right</a></td><td class="entry"><a class="el" href="classHuffman_1_1Node.html">Huffman::Node&lt; T &gt;</a></td><td class="entry"></td></tr>
+</table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sat Jan 31 2015 10:33:37 for Trajic by &#160;<a href="http://www.doxygen.org/index.html">
