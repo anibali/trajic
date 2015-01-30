@@ -4,17 +4,24 @@ Trajic
 Synopsis
 --------
 
-Trajic is a program for compressing GPS trajectory data.
+Trajic is an algorithm for compressing GPS trajectory data. For a more in-depth
+academic explanation of how Trajic works, be sure to read the
+[research paper](https://raw.githubusercontent.com/anibali/trajic/gh-pages/trajic_paper.pdf)
+I wrote with Dr Zhen He.
+
+This project contains a reference implementation of Trajic along with
+implementations of various other GPS trajectory compression schemes which were
+used for benchmarks and experiments.
 
 Development dependencies
 ------------------------
 
-* libcpptest-dev
-* libboost-iostreams-dev
+* [libcpptest-dev](http://cpptest.sourceforge.net/)
+* [libboost-iostreams-dev](http://www.boost.org/doc/libs/1_54_0/libs/iostreams/doc/index.html)
 
 Experiments also require
 
-* gnuplot
+* [gnuplot](http://www.gnuplot.info/)
 
 Usage
 -----
@@ -35,7 +42,7 @@ Decompress a trajectory:
 Important classes
 -----------------
 
-* PredictiveCompressor
-* \ref ibstream
-* \ref obstream
-* GPSPoint
+* @ref PredictiveCompressor
+* @ref ibstream
+* @ref obstream
+* @ref GPSPoint
