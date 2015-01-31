@@ -1,5 +1,7 @@
 *.o
-experiments/
 doc/
 bin/
 test/test
+experiments/*
+
+!experiments/*.rb
