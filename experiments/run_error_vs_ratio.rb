@@ -4,15 +4,16 @@ require './common'
 
 check_for_executables!
 
-DATA_ROOT = "/home/aiden/Data/Trajectories/Geolife/Data"
+#DATA_ROOT = "/home/aiden/Data/Trajectories/Geolife/Data"
+DATA_ROOT = "/home/aiden/Data/Trajectories/Illinois/person1"
 
 config = {
-  :n => 100
+  :n => :all
 }
 
 files = []
 Find.find(DATA_ROOT) do |path|
-  if FileTest.file? path and path.end_with? ".plt"
+  if FileTest.file? path and path.end_with? ".txt"
     files << path
   end
 end

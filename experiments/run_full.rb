@@ -4,24 +4,13 @@ require './common'
 
 check_for_executables!
 
-#DATA_ROOT = "/home/aiden/Data/Trajectories/Geolife/Data"
-DATA_ROOT = "/home/aiden/Data/Trajectories/Illinois/person1"
-
 config = {
-  :n          => :all,
-  :algorithm  => "squish",
+  algorithm: "delta",
+  data_path: "Illinois/person1", #"Geolife/Data"
+  extension: "txt"
 }
 
-files = []
-Find.find(DATA_ROOT) do |path|
-  if FileTest.file? path and path.end_with? ".txt"
-    files << path
-  end
-end
-
-unless config[:n].nil? or config[:n] == :all
-  files = files[0...config[:n]]
-end
+files = data_files(config[:data_path], config[:extension])
 
 checkpoint = 0.1 * files.length
 usize = 0.0
@@ -45,9 +34,11 @@ files.each_with_index do |path, i|
   #command= "./stats #{config[:algorithm]} '#{path}' 1 0.00001"
 
   # ~30m error
-  #command = "./stats #{config[:algorithm]} '#{path}' 0 0.00028"
-  # Squish, ~30m error
-  command = "./stats #{config[:algorithm]} '#{path}' 0 0.08"
+  if config[:algorithm] == "squish"
+    command = "./stats #{config[:algorithm]} '#{path}' 0 0.08"
+  else
+    command = "./stats #{config[:algorithm]} '#{path}' 0 0.00028"
+  end
 
   lines = IO.popen(command) do |io|
     io.readlines
@@ -79,7 +70,7 @@ end
 
 puts "."
 puts "Algorithm: #{config[:algorithm]}"
-puts "DATA_ROOT: #{DATA_ROOT}"
+puts "Data path: #{config[:data_path]}"
 puts "Num trajectories: #{n_trajs}"
 puts "Max error: #{max_error_kms * 1000} m"
 puts "Compression ratio: #{csize / usize}"
