@@ -6,7 +6,7 @@ Trajic
 Trajic is an algorithm for compressing GPS trajectory data. For a more in-depth
 academic explanation of how Trajic works, be sure to read the
 [research paper](https://raw.githubusercontent.com/anibali/trajic/gh-pages/trajic_paper.pdf)
-I wrote with Dr Zhen He.
+I wrote with [Dr Zhen He](http://homepage.cs.latrobe.edu.au/zhe/).
 
 This project contains a reference implementation of Trajic along with
 implementations of various other GPS trajectory compression schemes which were
