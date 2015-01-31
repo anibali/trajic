@@ -1,17 +1,15 @@
 #include "test.h"
 
-void IbstreamTestSuite::test_read_functions()
-{
-  char data[] = {0x41, (char)0x0F};
+BOOST_AUTO_TEST_CASE(test_ibstream) {
+  char data[] = {0x41, 0x0F};
   stream<basic_array_source<char>> buffer(data, sizeof(data));
   ibstream ibs(&buffer);
-  TEST_ASSERT(ibs.read_byte() == 'A');
-  TEST_ASSERT(ibs.read_int(4) == 15);
-  TEST_ASSERT(ibs.read_bit() == false);
+  BOOST_CHECK_EQUAL(ibs.read_byte(), 'A');
+  BOOST_CHECK_EQUAL(ibs.read_int(4), 15);
+  BOOST_CHECK_EQUAL(ibs.read_bit(), false);
 }
 
-void ObstreamTestSuite::test_write_double()
-{
+BOOST_AUTO_TEST_CASE(test_obstream_write_double) {
   char buffer[128] = {0};
   stream<basic_array<char> > bas(buffer, 128);
   obstream obs(&bas);
@@ -22,36 +20,32 @@ void ObstreamTestSuite::test_write_double()
   obs.write_double(2.2616345098039215e+06);
   obs.close();
   for(int i = 0; i < 8; ++i)
-    TEST_ASSERT(buffer[i] == 'A');
+    BOOST_CHECK_EQUAL(buffer[i], 'A');
 }
 
-void ObstreamTestSuite::test_write_int()
-{
+BOOST_AUTO_TEST_CASE(test_obstream_write_int) {
   char buffer[128] = {0};
   stream<basic_array<char> > bas(buffer, 128);
   obstream obs(&bas);
 
   obs.write_int(0x41, 7);
   obs.close();
-  TEST_ASSERT(buffer[0] == 'A');
+  BOOST_CHECK_EQUAL(buffer[0], 'A');
 }
 
-void GPSPointTestSuite::test_get_time()
-{
+BOOST_AUTO_TEST_CASE(test_gpspoint_get_time) {
   GPSPoint point(123, 50.7, 63.7);
-  TEST_ASSERT(point.get_time() == 123);
+  BOOST_CHECK_EQUAL(point.get_time(), 123);
 }
 
-void GPSPointTestSuite::test_distance()
-{
+BOOST_AUTO_TEST_CASE(test_gpspoint_distance) {
   GPSPoint p1(123, 50.7, 63.7);
   GPSPoint p2(234, 53.7, 67.7);
 
-  TEST_ASSERT_DELTA(p1.distance(p2), 5, 0.0000001);
+  BOOST_CHECK_CLOSE(p1.distance(p2), 5, 0.0001);
 }
 
-void HuffmanTestSuite::test_node()
-{
+BOOST_AUTO_TEST_CASE(test_huffman_node) {
   char c = 'X';
   Huffman::Node<char> n1(c, 0.4);
   Huffman::Node<char> n2(c, 0);
@@ -59,11 +53,10 @@ void HuffmanTestSuite::test_node()
   Huffman::Node<char> n4(c, 0.3);
   n2.left = &n3;
   n2.right = &n4;
-  TEST_ASSERT(n1 < n2)
+  BOOST_CHECK(n1 < n2);
 }
 
-void HuffmanTestSuite::test_codebook()
-{
+BOOST_AUTO_TEST_CASE(test_huffman_codebook) {
   vector<char> alphabet;
   alphabet.push_back('A');
   alphabet.push_back('N');
@@ -75,20 +68,18 @@ void HuffmanTestSuite::test_codebook()
   string msg = "";
   for(int i = 0; i < 6; ++i)
     msg += cb.lookup(ibs);
-  TEST_ASSERT(msg == "TANANT")
+  BOOST_CHECK_EQUAL(msg, "TANANT");
 }
 
-void HuffmanTestSuite::test_create_codewords()
-{
+BOOST_AUTO_TEST_CASE(test_huffman_create_codewords) {
   double freqs[] = {0.3, 0.6, 0.1};
   vector<string> codewords = Huffman::create_codewords(freqs, 3);
-  TEST_ASSERT(codewords[0] == "10")
-  TEST_ASSERT(codewords[1] == "0")
-  TEST_ASSERT(codewords[2] == "11")
+  BOOST_CHECK_EQUAL(codewords[0], "10");
+  BOOST_CHECK_EQUAL(codewords[1], "0");
+  BOOST_CHECK_EQUAL(codewords[2], "11");
 }
 
-void LenFreqDivTestSuite::test_len_freq_div()
-{
+BOOST_AUTO_TEST_CASE(test_len_freq_div) {
   double freqs[] = {0, 0.1, 0.6, 0.3, 0};
   LengthFrequencyDivider inst(freqs, 5, 5);
   inst.calculate();
@@ -99,14 +90,13 @@ void LenFreqDivTestSuite::test_len_freq_div()
   bool same = true;
   for(int i = 0; same and i < 2; ++i)
     if(expected[i] != actual[i]) same = false;
-  TEST_ASSERT(same)
+  BOOST_CHECK(same);
 
-  TEST_ASSERT(inst.get_cost(2) == 1.1)
-  TEST_ASSERT(inst.get_cost(4) == 2)
+  BOOST_CHECK_CLOSE(inst.get_cost(2), 1.1, 0.0001);
+  BOOST_CHECK_CLOSE(inst.get_cost(4), 2, 0.0001);
 }
 
-void DeltaCompressorTestSuite::test_all()
-{
+BOOST_AUTO_TEST_CASE(test_delta_compressor) {
   DeltaCompressor c;
 
   vector<GPSPoint> points;
@@ -125,11 +115,10 @@ void DeltaCompressorTestSuite::test_all()
   vector<GPSPoint> new_points = c.decompress(ibs);
 
   for(size_t i = 0; i < points.size(); ++i)
-    TEST_ASSERT(points[i].distance(new_points[i]) < 0.00000001);
+    BOOST_CHECK(points[i].distance(new_points[i]) < 0.00000001);
 }
 
-void SquishCompressorTestSuite::test_all()
-{
+BOOST_AUTO_TEST_CASE(test_squish_compressor) {
   SquishCompressor c(0.5);
 
   vector<GPSPoint> points;
@@ -150,14 +139,13 @@ void SquishCompressorTestSuite::test_all()
   ibstream ibs(&bas);
   vector<GPSPoint> new_points = c.decompress(ibs);
 
-  TEST_ASSERT(new_points.size() == 3);
-  TEST_ASSERT(points[0].distance(new_points[0]) < 0.00000001);
-  TEST_ASSERT(points[3].distance(new_points[1]) < 0.00000001);
-  TEST_ASSERT(points[5].distance(new_points[2]) < 0.00000001);
+  BOOST_CHECK_EQUAL(new_points.size(), 3);
+  BOOST_CHECK(points[0].distance(new_points[0]) < 0.00000001);
+  BOOST_CHECK(points[3].distance(new_points[1]) < 0.00000001);
+  BOOST_CHECK(points[5].distance(new_points[2]) < 0.00000001);
 }
 
-void EncoderTestSuite::test_dynamic()
-{
+BOOST_AUTO_TEST_CASE(test_dynamic_encoder) {
   uint64_t nums[] = {2, 1, 5, 67, 68, 4, 3, 2, 1, 73, 0, 2};
 
   char buffer[128] = {0};
@@ -178,26 +166,6 @@ void EncoderTestSuite::test_dynamic()
   for(int i = 0; i < 12; ++i)
   {
     uint64_t num = dec.decode(ibs);
-    TEST_ASSERT(num == nums[i]);
+    BOOST_CHECK_EQUAL(num, nums[i]);
   }
-
 }
-
-int main()
-{
-  Test::Suite ts;
-  ts.add(auto_ptr<Test::Suite>(new IbstreamTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new ObstreamTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new GPSPointTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new HuffmanTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new LenFreqDivTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new DeltaCompressorTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new SquishCompressorTestSuite));
-  ts.add(auto_ptr<Test::Suite>(new EncoderTestSuite));
-
-  Test::TextOutput output(Test::TextOutput::Terse);
-  ts.run(output);
-
-  return 0;
-}
-

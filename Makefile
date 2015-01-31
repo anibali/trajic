@@ -6,12 +6,12 @@ util.o csv_reader.o dynamic_encoder.o
 STATS_OBJS = delta_compressor.o dp_compressor.o dummy_compressor.o \
 squish_compressor.o
 
-default: trajic clean
+default: trajic
 
 all: trajic test experiments clean
 
-test: $(OBJS) $(STATS_OBJS)
-	$(CC) $(CFLAGS) -Isrc test/test.cpp -lcpptest $(OBJS) $(STATS_OBJS) -o test/test
+test: $(OBJS) $(STATS_OBJS) .force
+	$(CC) $(CFLAGS) -Isrc test/test.cpp -lboost_unit_test_framework $(OBJS) $(STATS_OBJS) -o test/test
 	test/test
 
 trajic: $(OBJS) main.o
@@ -29,3 +29,4 @@ doc:
 experiments: $(OBJS) $(STATS_OBJS) stats.o
 	$(CC) $(CFLAGS) $(OBJS) $(STATS_OBJS) stats.o -o experiments/stats
 
+.force:

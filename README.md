@@ -16,7 +16,7 @@ used for benchmarks and experiments.
 Development dependencies
 ------------------------
 
-* [libcpptest-dev](http://cpptest.sourceforge.net/)
+* [libboost-test-dev](http://www.boost.org/doc/libs/1_54_0/libs/test/doc/html/index.html)
 * [libboost-iostreams-dev](http://www.boost.org/doc/libs/1_54_0/libs/iostreams/doc/index.html)
 
 Experiments also require

@@ -5,7 +5,7 @@ DynamicEncoder::DynamicEncoder(obstream& obs, uint64_t *nums, int len)
   double freqs[65] = {0};
   double step = 1.0 / len;
   int n_freqs = 0;
-  
+
   for(int i = 0; i < len; ++i)
   {
     int min_len = 0;
@@ -14,7 +14,7 @@ DynamicEncoder::DynamicEncoder(obstream& obs, uint64_t *nums, int len)
     freqs[min_len] += step;
     n_freqs = max(n_freqs, min_len + 1);
   }
-  
+
   // Predict the number of dividers beyond which there will be no compression
   // gain.
   int max_divs = 0;
@@ -24,14 +24,14 @@ DynamicEncoder::DynamicEncoder(obstream& obs, uint64_t *nums, int len)
   }
   if(max_divs < 4) max_divs = 4;
   if(max_divs > 32) max_divs = 32;
-  
+
   int dividers[max_divs];
   double min_cost = numeric_limits<double>::max();
   LengthFrequencyDivider lfd(freqs, n_freqs, max_divs);
   lfd.calculate();
-  
+
   int n_divs = max_divs;
-  
+
   for(int n_codewords = 2; n_codewords <= max_divs; ++n_codewords)
   {
     double cost = lfd.get_cost(n_codewords) +
@@ -48,7 +48,7 @@ DynamicEncoder::DynamicEncoder(obstream& obs, uint64_t *nums, int len)
       // break;
     }
   }
-  
+
   double clumped_freqs[n_divs];
   int b = 0;
   for(int i = 0; i < n_freqs and b < n_divs; ++i)
@@ -56,12 +56,12 @@ DynamicEncoder::DynamicEncoder(obstream& obs, uint64_t *nums, int len)
     clumped_freqs[b] += freqs[i];
     if(i == dividers[b]) ++b;
   }
-  
+
   vector<int> div_vec;
   div_vec.assign(dividers, dividers + n_divs);
   codebook = new Huffman::Codebook<int>(div_vec,
     Huffman::create_codewords(clumped_freqs, n_divs));
-  
+
   // Write out alphabet and codebook
   obs.write_int(codebook->get_alphabet().size(), 8);
   for(int symbol : codebook->get_alphabet())

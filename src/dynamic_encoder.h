@@ -20,8 +20,6 @@ public:
 
 private:
   Huffman::Codebook<int> *codebook = nullptr;
-  uint64_t *nums;
-  int len = 0;
 };
 
 #endif
