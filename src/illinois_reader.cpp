@@ -5,17 +5,18 @@
 #include <limits>
 using namespace std;
 
-/// TODO: UNTESTED!
 GPSPoint IllinoisReader::read_point()
 {
-  double d;
-  *is >> d;
+  double lat, lon;
+  *is >> lat;
   is->ignore(numeric_limits<streamsize>::max(), '|');
   is->ignore(numeric_limits<streamsize>::max(), ' ');
-  *is >> d;
+  *is >> lon;
   is->ignore(numeric_limits<streamsize>::max(), '|');
   is->ignore(numeric_limits<streamsize>::max(), ' ');
-  
+  lat = lat / 100.0;
+  lon = -(lon / 100);
+
   int hour, min, sec;
   *is >> hour;
   is->ignore(numeric_limits<streamsize>::max(), ':');
@@ -24,7 +25,7 @@ GPSPoint IllinoisReader::read_point()
   is->ignore(numeric_limits<streamsize>::max(), ':');
   *is >> sec;
   is->ignore(numeric_limits<streamsize>::max(), '\n');
-  
+
   tm timeinfo;
   timeinfo.tm_sec = sec;
   timeinfo.tm_min = min;
@@ -33,19 +34,19 @@ GPSPoint IllinoisReader::read_point()
   timeinfo.tm_mon = 0;
   timeinfo.tm_mday = 1;
   int time = mktime(&timeinfo);
-  
+
   is->ignore(numeric_limits<streamsize>::max(), '|');
   is->ignore(numeric_limits<streamsize>::max(), ' ');
-  
-  double lat, lon;
-  *is >> lat;
+
+  double d;
+  *is >> d;
   is->ignore(numeric_limits<streamsize>::max(), '|');
   is->ignore(numeric_limits<streamsize>::max(), ' ');
-  *is >> lon;
+  *is >> d;
   is->ignore(numeric_limits<streamsize>::max(), '\n');
-  
+
   GPSPoint point(time, lat, lon);
-  
+
   return point;
 }
 

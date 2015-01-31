@@ -41,26 +41,26 @@ while error > 0.00000001
         print "."
         $stdout.flush
       end
-      
+
       io = IO.popen("./stats #{alg} \"#{path}\" 0 #{error}")
       lines = io.readlines
       io.close
-      
+
       unless lines.empty?
         results = {}
         lines.each do |line|
           key, val = *line.split("=")
           results[key] = val.strip
         end
-      
+
         usize += results["raw_size"].to_i
         csize += results["compr_size"].to_i
         compr_time += results["compr_time"].to_i
         decompr_time += results["decompr_time"].to_i
-        
+
         error_kms = results["max_error_kms"].to_f
         max_error_kms = error_kms if error_kms > max_error_kms
-        
+
         n_trajs += 1
       end
     end
@@ -75,7 +75,7 @@ while error > 0.00000001
       fout.print "#{csize / usize} #{compr_time / n_trajs / 1000} "
     end
   end
-  
+
   puts
   fout.puts
   error /= 2
@@ -92,7 +92,7 @@ set ytic auto
 set xlabel "Compression ratio"
 set ylabel "Compression time (ms)"
 set size 1.0, 0.6
-set terminal postscript portrait enhanced mono dashed dl 5 lw 1 "Helvetica" 14 
+set terminal postscript portrait enhanced mono dashed dl 5 lw 1 "Helvetica" 14
 set output "time_vs_ratio-#{config[:n]}.ps"
 plot "results.dat" using 1:2 lt 1 title 'Trajic' with lines , \
      "results.dat" using 3:4 lt 2 title 'TD-SED + Delta' with lines , \
