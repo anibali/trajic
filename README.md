@@ -1,8 +1,7 @@
 Trajic
 ======
 
-Synopsis
---------
+[![Build Status](https://travis-ci.org/anibali/trajic.svg?branch=master)](https://travis-ci.org/anibali/trajic)
 
 Trajic is an algorithm for compressing GPS trajectory data. For a more in-depth
 academic explanation of how Trajic works, be sure to read the
