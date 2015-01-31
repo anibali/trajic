@@ -1,4 +1,3 @@
-CC = g++-4.9
 CFLAGS = -std=c++11 -O3 -Wall
 OBJS = ibstream.o obstream.o gps_point.o huffman.o plt_reader.o \
 len_freq_div.o linear_predictor.o predictive_compressor.o illinois_reader.o \
@@ -11,14 +10,14 @@ default: trajic
 all: trajic test experiments clean
 
 test: $(OBJS) $(STATS_OBJS) .force
-	$(CC) $(CFLAGS) -Isrc test/test.cpp -lboost_unit_test_framework $(OBJS) $(STATS_OBJS) -o test/test
+	$(CXX) $(CFLAGS) -Isrc test/test.cpp -lboost_unit_test_framework $(OBJS) $(STATS_OBJS) -o test/test
 	test/test
 
 trajic: $(OBJS) main.o
-	$(CC) $(CFLAGS) $(OBJS) main.o -o bin/trajic
+	$(CXX) $(CFLAGS) $(OBJS) main.o -o bin/trajic
 
 %.o: src/%.cpp
-	$(CC) $(CFLAGS) -c $<
+	$(CXX) $(CFLAGS) -c $<
 
 clean:
 	rm *.o
@@ -27,6 +26,6 @@ doc:
 	doxygen
 
 experiments: $(OBJS) $(STATS_OBJS) stats.o
-	$(CC) $(CFLAGS) $(OBJS) $(STATS_OBJS) stats.o -o experiments/stats
+	$(CXX) $(CFLAGS) $(OBJS) $(STATS_OBJS) stats.o -o experiments/stats
 
 .force:
