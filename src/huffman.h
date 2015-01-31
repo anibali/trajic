@@ -22,7 +22,7 @@ public:
   Node<T> *left = nullptr;
   Node<T> *right = nullptr;
   T data;
-  
+
   Node() = default;
   Node(T& data, double freq) : data(data), freq(freq) {}
   Node(Node<T>* left, Node<T>* right) : left(left), right(right) {}
@@ -31,7 +31,7 @@ public:
   {
     return is_leaf() ? freq : left->get_frequency() + right->get_frequency();
   }
-  
+
   /// Treverses the tree and deletes each node with the `delete` operator
   void delete_tree()
   {
@@ -73,13 +73,13 @@ public:
   {
     build_tree();
   }
-  
+
   Codebook(vector<T> alphabet, ibstream& ibs)
     : alphabet(alphabet)
   {
     int n_codewords = alphabet.size();
     int max_len = ibs.read_byte();
-    pair<int, string> cws[n_codewords];
+    auto cws = new pair<int, string>[n_codewords];
     for(int i = 0; i < n_codewords; ++i)
     {
       int len = ibs.read_int(max_len);
@@ -89,22 +89,24 @@ public:
       cws[i].first = i;
       cws[i].second = binary;
     }
-    
+
     codewords = canonicalize(cws, n_codewords);
-    
+
+    delete[] cws;
+
     build_tree();
   }
-  
+
   const vector<T>& get_alphabet() const
   {
     return alphabet;
   }
-  
+
   const vector<string>& get_codewords() const
   {
     return codewords;
   }
-  
+
   T& lookup(ibstream& ibs) const
   {
     Node<T>* node = root;
@@ -112,10 +114,10 @@ public:
       node = !ibs.read_bit() ? node->left : node->right;
     return node->data;
   }
-  
+
   void encode(obstream& obs) const
   {
-    int max_len = 0;
+    size_t max_len = 0;
     for(string codeword : codewords)
       if(codeword.length() > max_len)
         max_len = codeword.length();
@@ -124,22 +126,22 @@ public:
     for(string codeword : codewords)
       obs.write_int(codeword.length(), max_len);
   }
-  
+
   ~Codebook()
   {
     root->delete_tree();
     delete root;
   }
-  
+
 private:
   vector<T> alphabet;
   vector<string> codewords;
   Node<T>* root;
-  
+
   void build_tree()
   {
     root = new Node<T>;
-    for(int i = 0; i < alphabet.size(); ++i)
+    for(size_t i = 0; i < alphabet.size(); ++i)
     {
       Node<T>* node = root;
       for(char c : codewords[i])

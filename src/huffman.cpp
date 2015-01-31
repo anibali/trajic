@@ -8,28 +8,28 @@ Node<int>* create_tree(double *freqs, int n_freqs)
   auto comp = [](Node<int>* a, Node<int>* b)
     { return a->get_frequency() > b->get_frequency(); };
   priority_queue<Node<int>*, vector<Node<int>*>, decltype(comp)> pq(comp);
-  
+
   for(int i = 0; i < n_freqs; ++i)
     pq.push(new Node<int>(i, freqs[i]));
-  
+
   while(pq.size() > 1)
   {
     Node<int> *left = pq.top(); pq.pop();
     Node<int> *right = pq.top(); pq.pop();
     pq.push(new Node<int>(left, right));
   }
-  
+
   return pq.top();
 }
 
 vector<string> canonicalize(pair<int, string> *cws, int n_codewords)
 {
-  sort(cws, cws + n_codewords, 
+  sort(cws, cws + n_codewords,
   [](const pair<int, string>& a, const pair<int, string>& b) -> bool
-  { 
-    return a.second.size() < b.second.size(); 
+  {
+    return a.second.size() < b.second.size();
   });
-  
+
   int code = 0;
   for(int i = 0; i < n_codewords; ++i)
   {
@@ -41,16 +41,16 @@ vector<string> canonicalize(pair<int, string> *cws, int n_codewords)
       code = (code + 1) <<
         (cws[i + 1].second.length() - cws[i].second.length());
   }
-  
-  sort(cws, cws + n_codewords, 
+
+  sort(cws, cws + n_codewords,
   [](const pair<int, string>& a, const pair<int, string>& b) -> bool
   {
-    return a.first < b.first; 
+    return a.first < b.first;
   });
   vector<string> codewords(n_codewords);
   for(int i = 0; i < n_codewords; ++i)
     codewords[i] = cws[i].second;
-  
+
   return codewords;
 }
 
@@ -75,14 +75,18 @@ vector<string> create_codewords(double *freqs, int n_freqs)
       q.push(NodeCode(nc.first->right, nc.second + "1"));
     }
   }
-  
-  pair<int, string> cws[n_freqs];
+
+  auto cws = new pair<int, string>[n_freqs]; // max n_freqs
   for(int i = 0; i < n_freqs; ++i)
   {
     cws[i] = pair<int, string>(i, codewords[i]);
   }
-    
-  return canonicalize(cws, n_freqs);
+
+  vector<string> canonical = canonicalize(cws, n_freqs);
+
+  delete[] cws;
+
+  return canonical;
 }
 
 }

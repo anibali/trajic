@@ -15,7 +15,7 @@ bool ibstream::read_bit()
 dynamic_bitset<> ibstream::read_bits(size_t size)
 {
   dynamic_bitset<> bitset(size);
-  for(int i = 0; i < size; ++i)
+  for(size_t i = 0; i < size; ++i)
   {
     bool bit = read_bit();
     bitset[i] = bit;
@@ -36,12 +36,12 @@ uint8_t ibstream::read_byte()
 uint64_t ibstream::read_int(size_t size)
 {
   uint64_t n = 0;
-  for(int i = 0; i < size / 8; ++i)
+  for(size_t i = 0; i < size / 8; ++i)
   {
     uint64_t byte = read_byte();
     n |= byte << (i * 8);
   }
-  for(int i = (size / 8) * 8; i < size; ++i)
+  for(size_t i = (size / 8) * 8; i < size; ++i)
   {
     if(read_bit())
       n |= 1ul << i;

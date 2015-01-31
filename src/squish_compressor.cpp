@@ -19,7 +19,7 @@ void SquishCompressor::compress(obstream& obs, vector<GPSPoint> points)
   if(max_buffer_size > 2) {
     buffer.push_back({points[1], 0});
 
-    for(int i = 2; i < points.size(); ++i)
+    for(size_t i = 2; i < points.size(); ++i)
     {
       buffer.push_back({points[i], 0});
 
@@ -58,7 +58,7 @@ void SquishCompressor::compress(obstream& obs, vector<GPSPoint> points)
 
   obs.write_int(buffer.size(), 32);
 
-  for(int i = 0; i < buffer.size(); ++i)
+  for(size_t i = 0; i < buffer.size(); ++i)
   {
     obs.write_double(buffer[i].point.get_time());
     obs.write_double(buffer[i].point.get_latitude());

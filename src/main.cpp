@@ -13,30 +13,30 @@ using namespace std;
 void compress(string filename, double mte=0, double mse=0)
 {
   PredictiveCompressor c(mte, mse);
-  
+
   cout << "Reading file..." << endl;
   vector<GPSPoint> points = read_points(filename);
-  
+
   cout << "Compressing..." << endl;
   ofstream fout(file_basename(filename) + ".tjc");
   obstream obs(&fout);
   c.compress(obs, points);
   obs.close();
   fout.close();
-  
+
   cout << "Done." << endl;
 }
 
 void decompress(string filename)
 {
   PredictiveCompressor c;
-  
+
   cout << "Decompressing..." << endl;
   ifstream fin(filename);
   ibstream ibs(&fin);
   vector<GPSPoint> points = c.decompress(ibs);
   fin.close();
-  
+
   cout << "Writing file..." << endl;
   ofstream fout(file_basename(filename) + ".csv");
   obstream obs(&fout);
@@ -47,7 +47,7 @@ void decompress(string filename)
   }
   obs.close();
   fout.close();
-  
+
   cout << "Done." << endl;
 }
 
@@ -64,32 +64,26 @@ int main(int argc, char** args)
     string infile = args[2];
     if(mode == "c")
     {
-      double mte, mse;
-      
+      double mte = 0, mse = 0;
+
       if(argc > 3)
       {
         try
         {
           mte = boost::lexical_cast<double>(args[3]);
         }
-        catch(boost::bad_lexical_cast const&)
-        {
-          mte = 0;
-        }
+        catch(boost::bad_lexical_cast const&) {}
       }
-      
+
       if(argc > 4)
       {
         try
         {
           mse = boost::lexical_cast<double>(args[4]);
         }
-        catch(boost::bad_lexical_cast const&)
-        {
-          mse = 0;
-        }
+        catch(boost::bad_lexical_cast const&) {}
       }
-      
+
       compress(infile, mte, mse);
     }
     else if(mode == "d")
@@ -101,6 +95,6 @@ int main(int argc, char** args)
       cout << "Accepted modes are [c]ompress and [d]ecompress" << endl;
     }
   }
-  
+
   return 0;
 }

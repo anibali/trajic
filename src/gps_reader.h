@@ -19,7 +19,8 @@ public:
     while(has_more()) points.push_back(read_point());
     return points;
   }
-  
+  virtual ~GPSReader() {};
+
 protected:
   istream *is;
 };

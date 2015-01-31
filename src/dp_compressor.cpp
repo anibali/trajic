@@ -15,17 +15,17 @@ vector<GPSPoint> DPCompressor::decompress(ibstream& ibs)
 vector<GPSPoint> DPCompressor::downsample(vector<GPSPoint> points)
 {
   if(points.size() < 3) return points;
-  
+
   GPSPoint first = points[0];
   GPSPoint last = points[points.size() - 1];
   double dlat = last.get_latitude() - first.get_latitude();
   double dlon = last.get_longitude() - first.get_longitude();
   double dt = last.get_time() - first.get_time();
-  
+
   double max_kms = -1;
   int furthest;
   double max_dist = -1;
-  for(int i = 1; i < points.size() - 1; ++i)
+  for(size_t i = 1; i < points.size() - 1; ++i)
   {
     double tr = (points[i].get_time() - first.get_time()) / dt;
     GPSPoint approx(points[i].get_time(),
@@ -39,7 +39,7 @@ vector<GPSPoint> DPCompressor::downsample(vector<GPSPoint> points)
       furthest = i;
     }
   }
-  
+
   if(max_dist > max_error)
   {
     vector<GPSPoint> a(points.begin(), points.begin() + furthest);
@@ -56,11 +56,11 @@ vector<GPSPoint> DPCompressor::downsample(vector<GPSPoint> points)
   {
     max_error_kms = max(max_error_kms, max_kms);
   }
-  
+
   vector<GPSPoint> ab;
   ab.push_back(first);
   ab.push_back(last);
-  
+
   return ab;
 }
 

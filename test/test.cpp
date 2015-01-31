@@ -124,7 +124,7 @@ void DeltaCompressorTestSuite::test_all()
   ibstream ibs(&bas);
   vector<GPSPoint> new_points = c.decompress(ibs);
 
-  for(int i = 0; i < points.size(); ++i)
+  for(size_t i = 0; i < points.size(); ++i)
     TEST_ASSERT(points[i].distance(new_points[i]) < 0.00000001);
 }
 

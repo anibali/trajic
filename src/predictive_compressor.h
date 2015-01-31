@@ -25,11 +25,11 @@ public:
   {}
   virtual void compress(obstream& obs, vector<GPSPoint> points) override;
   virtual vector<GPSPoint> decompress(ibstream& ibs) override;
-  
+
 private:
   Predictor *predictor;
   double max_temporal_err, max_spatial_err;
-  
+
   int calculate_discarded_bits(double max_value, double error_bound);
 };
 

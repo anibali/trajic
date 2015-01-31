@@ -68,7 +68,7 @@ void stats(string filename, Compressor *c)
   // }
 
   int new_points_index = 0;
-  for(int i = 0; i < points.size(); ++i)
+  for(size_t i = 0; i < points.size(); ++i)
   {
     GPSPoint new_point = new_points[new_points_index];
 
@@ -103,7 +103,7 @@ void stats(string filename, Compressor *c)
 
   // Check for "pure" lossless (point for point correspondence)
   bool lossless = true;
-  for(int i = 0; lossless and i < points.size(); ++i)
+  for(size_t i = 0; lossless and i < points.size(); ++i)
   {
     lossless = points[i].distance(new_points[i]) < 0.000000001;
   }
@@ -121,7 +121,7 @@ int main(int argc, char** args)
   {
     string alg = args[1];
     string infile = args[2];
-    double mte, mse;
+    double mte = 0, mse = 0;
 
     if(argc > 3)
     {
@@ -129,10 +129,7 @@ int main(int argc, char** args)
       {
         mte = boost::lexical_cast<double>(args[3]);
       }
-      catch(boost::bad_lexical_cast const&)
-      {
-        mte = 0;
-      }
+      catch(boost::bad_lexical_cast const&) {}
     }
 
     if(argc > 4)
@@ -141,10 +138,7 @@ int main(int argc, char** args)
       {
         mse = boost::lexical_cast<double>(args[4]);
       }
-      catch(boost::bad_lexical_cast const&)
-      {
-        mse = 0;
-      }
+      catch(boost::bad_lexical_cast const&) {}
     }
 
     if(alg == "trajic") // Trajic

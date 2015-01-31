@@ -21,7 +21,7 @@ public:
 private:
   ostream *os;
   int8_t part = 0;
-  int pos = 0;
+  size_t pos = 0;
 };
 
 #endif
