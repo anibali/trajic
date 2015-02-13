@@ -5,12 +5,14 @@ require './common'
 check_for_executables!
 
 config = {
-  algorithm: "delta",
-  data_path: "Illinois/person1", #"Geolife/Data"
-  extension: "txt"
+  algorithm: "trajic",
+  #data_path: "Illinois/person1",
+  #extension: "txt"
+  data_path: "IllinoisClustered/Processed/0.03/centers",
+  extension: "csv"
 }
 
-files = data_files(config[:data_path], config[:extension])
+files = data_files(config[:data_path], config[:extension], :all)
 
 checkpoint = 0.1 * files.length
 usize = 0.0
@@ -27,18 +29,18 @@ files.each_with_index do |path, i|
     $stdout.flush
   end
 
-  # Lossless
-  #command = "./stats #{config[:algorithm]} '#{path}'"
+  # # Lossless
+  command = "./stats #{config[:algorithm]} '#{path}'"
 
-  # ~1m error
-  #command= "./stats #{config[:algorithm]} '#{path}' 1 0.00001"
+  # # ~1m error
+  # command= "./stats #{config[:algorithm]} '#{path}' 1 0.00001"
 
-  # ~30m error
-  if config[:algorithm] == "squish"
-    command = "./stats #{config[:algorithm]} '#{path}' 0 0.08"
-  else
-    command = "./stats #{config[:algorithm]} '#{path}' 0 0.00028"
-  end
+  # # ~30m error
+  # if config[:algorithm] == "squish"
+  #   command = "./stats #{config[:algorithm]} '#{path}' 0 0.08"
+  # else
+  #   command = "./stats #{config[:algorithm]} '#{path}' 0 0.00028"
+  # end
 
   lines = IO.popen(command) do |io|
     io.readlines

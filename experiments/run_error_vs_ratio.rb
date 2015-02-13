@@ -4,23 +4,13 @@ require './common'
 
 check_for_executables!
 
-#DATA_ROOT = "/home/aiden/Data/Trajectories/Geolife/Data"
-DATA_ROOT = "/home/aiden/Data/Trajectories/Illinois/person1"
-
 config = {
-  :n => :all
+  data_path: "Geolife/Data", #"Illinois/person1",
+  extension: "plt",
+  n: 1000
 }
 
-files = []
-Find.find(DATA_ROOT) do |path|
-  if FileTest.file? path and path.end_with? ".txt"
-    files << path
-  end
-end
-
-unless config[:n].nil? or config[:n] == :all
-  files = files[0...config[:n]]
-end
+files = data_files(config[:data_path], config[:extension], config[:n])
 
 fout = open("results.dat", "w")
 
@@ -87,7 +77,7 @@ fout.close
 gnuplot_instr = <<-END
 set autoscale
 set logscale x
-set xrange[0.001:1000]
+set xrange[0.001:100]
 set xtic auto
 set ytic auto
 set title "Max error vs compression ratio (#{config[:n]} trajectories)"
