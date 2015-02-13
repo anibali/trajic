@@ -12,14 +12,32 @@ This project contains a reference implementation of Trajic along with
 implementations of various other GPS trajectory compression schemes which were
 used for benchmarks and experiments.
 
-Development dependencies
-------------------------
+Development
+-----------
+
+### Compiling
+
+```sh
+make
+```
+
+The default `make` task just builds the `trajic` binary.
+
+```sh
+make all
+```
+
+The `all` task runs tests and produces both the `trajic` and `stats` binaries
+(the latter of which is used for running experiments).
+
+### Dependencies
 
 * [libboost-test-dev](http://www.boost.org/doc/libs/1_54_0/libs/test/doc/html/index.html)
 * [libboost-iostreams-dev](http://www.boost.org/doc/libs/1_54_0/libs/iostreams/doc/index.html)
 
 Experiments also require
 
+* [Ruby](https://www.ruby-lang.org/)
 * [gnuplot](http://www.gnuplot.info/)
 
 Usage
