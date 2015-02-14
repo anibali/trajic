@@ -39,6 +39,7 @@ Experiments also require
 
 * [Ruby](https://www.ruby-lang.org/)
 * [gnuplot](http://www.gnuplot.info/)
+* [libjansson-dev](http://www.digip.org/jansson/)
 
 Usage
 -----
