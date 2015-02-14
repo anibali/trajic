@@ -15,10 +15,12 @@ def check_for_executables!
     executables_missing ||= !find_executable(executable)
   end
 
-  print "checking for Trajic stats binary..."
-  stats_binary_exists = File.exists?("./stats")
-  executables_missing ||= !stats_binary_exists
-  puts stats_binary_exists ? " yes" : " no"
+  %w[stats run_predictors].each do |binary|
+    print "checking for Trajic #{binary} binary..."
+    binary_exists = File.exists?("./#{binary}")
+    executables_missing ||= !binary_exists
+    puts binary_exists ? " yes" : " no"
+  end
 
   if executables_missing
     STDERR.puts "[ERROR] Executable(s) missing"
@@ -38,4 +40,10 @@ def data_files path, extension, number=:all
     end
   end
   files
+end
+
+def median(array)
+  sorted = array.sort
+  len = sorted.length
+  return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
 end
