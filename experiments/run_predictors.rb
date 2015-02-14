@@ -8,8 +8,8 @@ check_for_executables!
 
 config = {
   algorithm: "trajic",
-  data_path: "Geolife/Data",
-  extension: "plt"
+  data_path: "Illinois/person1",
+  extension: "txt"
   #data_path: "IllinoisClustered/Processed/0.03/centers",
   #extension: "csv"
 }

@@ -5,7 +5,7 @@ len_freq_div.o linear_predictor.o predictive_compressor.o illinois_reader.o \
 util.o csv_reader.o dynamic_encoder.o
 STATS_OBJS = delta_compressor.o dp_compressor.o dummy_compressor.o \
 squish_compressor.o
-PRED_OBJS = constant_predictor.o
+PRED_OBJS = constant_predictor.o naive_linear_predictor.o
 
 default: trajic clean
 

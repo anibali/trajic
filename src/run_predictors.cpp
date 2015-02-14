@@ -22,6 +22,7 @@ using boost::posix_time::ptime;
 #include "read_points.h"
 
 #include "linear_predictor.h"
+#include "naive_linear_predictor.h"
 #include "constant_predictor.h"
 
 int residual_length(uint64_t residual) {
@@ -90,11 +91,14 @@ void run_predictors(string filename)
   json_t* linear_results = run_predictor(new LinearPredictor(), points);
   json_object_set(linear_results, "name", json_string("LinearPredictor"));
 
+  json_t* naive_linear_results = run_predictor(new NaiveLinearPredictor(), points);
+  json_object_set(naive_linear_results, "name", json_string("NaiveLinearPredictor"));
+
   json_t* constant_results = run_predictor(new ConstantPredictor(), points);
   json_object_set(constant_results, "name", json_string("ConstantPredictor"));
 
-  json_t* predictor_results = json_pack("[o, o]",
-    linear_results, constant_results);
+  json_t* predictor_results = json_pack("[o, o, o]",
+    linear_results, naive_linear_results, constant_results);
 
   json_t* json_root = json_pack("{s:o, s:o}",
     "trajectory", trajectory_stats,
